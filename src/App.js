@@ -40,7 +40,11 @@ class App extends Component {
     // };
 
     const newStore = {...this.state.store};
-    newStore.lists[index - 1].cardIds.push(newId);
+    const newIds = newStore.lists[index - 1].cardIds;
+    newStore.lists[index - 1] = {
+      cardIds: [newIds].push(newId),
+      ...newStore.lists[index - 1]
+    }
     // newStore.allCards = {
     //     newId: newCard
     //   };
@@ -53,8 +57,7 @@ class App extends Component {
 
   render() {
     const store = this.state.store;
-
-
+    
     return (
       <main className='App'>
         <header className='App-header'>
